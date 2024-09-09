@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Perfil</title>
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    {% extends "blog/home.html" %}
+
+    {% load static %}
+
+    {% block content%}
+    <div class="container">
+        <h1>Perfil de Usuario</h1>
+        <form method="post">
+            {% csrf_token %}
+            <!-- Include form fields for profile update -->
+            <button type="submit" name="update" class="btn btn-primary">Actualizar</button>
+            <button type="submit" name="delete" class="btn btn-danger">Eliminar Cuenta</button>
+        </form>
+    </div>
+    {% endblock content %}
+</body>
+</html>
