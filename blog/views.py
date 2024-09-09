@@ -35,7 +35,7 @@ def update_post(request, pk):
             return redirect("home")
     else:
         form = PostForm(instance=post)
-    return render(request, "blog/update_post.html", {"form": form})
+    return render(request, "blog/update_post.html", {"form": form, "post": post})
 
 
 def delete_post(request, pk):
