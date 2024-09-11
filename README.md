@@ -2,6 +2,8 @@
 
 Este proyecto es un blog simple creado con Django y Bootstrap. Permite a los usuarios registrarse, iniciar sesión, crear y gestionar posts.
 
+Proyecto realizado unicamente por Emiliano Cabrera
+
 ## Estructura del Proyecto
 
 - **Blog**: Manejo de posts del blog.
@@ -11,36 +13,42 @@ Este proyecto es un blog simple creado con Django y Bootstrap. Permite a los usu
 ## Instalación
 
 1. **Clona el repositorio**:
-    ```bash
-    git clone https://github.com/tu_usuario/mi_blog.git
-    cd mi_blog
-    ```
+
+   ```bash
+   git clone https://github.com/emilianocabrera90/FinaPythonl-EmilianoCabrera
+   cd mi_blog
+   ```
 
 2. **Crea un entorno virtual**:
-    ```bash
-    python3 -m venv env
-    source env/bin/activate  # En Windows usa `env\Scripts\activate`
-    ```
+
+   ```bash
+   python3 -m venv env
+   source env/bin/activate  # En Windows usa `env\Scripts\activate`
+   ```
 
 3. **Instala las dependencias**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+
+   ```bash
+   pip install -r requirements.txt
+   ```
 
 4. **Configura la base de datos**:
-    ```bash
-    python manage.py migrate
-    ```
+
+   ```bash
+   python manage.py migrate
+   ```
 
 5. **Crea un superusuario**:
-    ```bash
-    python manage.py createsuperuser
-    ```
+
+   ```bash
+   python manage.py createsuperuser
+   ```
 
 6. **Ejecuta el servidor de desarrollo**:
-    ```bash
-    python manage.py runserver
-    ```
+
+   ```bash
+   python manage.py runserver
+   ```
 
 7. **Accede a la aplicación**:
    - Visita `http://127.0.0.1:8000/` para ver la aplicación en tu navegador.
@@ -63,5 +71,3 @@ Este proyecto es un blog simple creado con Django y Bootstrap. Permite a los usu
 3. Realiza tus cambios y haz commit (`git commit -am 'Agrega nueva característica'`).
 4. Empuja a tu rama (`git push origin feature/nueva-caracteristica`).
 5. Crea una Pull Request.
-
-
