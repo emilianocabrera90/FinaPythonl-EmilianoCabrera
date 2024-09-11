@@ -56,13 +56,15 @@ Proyecto realizado unicamente por Emiliano Cabrera
 
 ## Uso
 
-- **Home**: Página principal del blog.
-- **Crear Post**: Formularios para crear nuevos posts.
-- **Editar Post**: Edita posts existentes.
-- **Eliminar Post**: Elimina posts.
-- **Registrar**: Registro de nuevos usuarios.
-- **Iniciar Sesión**: Inicio de sesión para usuarios registrados.
-- **Perfil**: Página de perfil del usuario para actualizar información.
+* Home: http://127.0.0.1:8000/
+* Blog: http://127.0.0.1:8000/post/<id>/
+* Crear Post: http://127.0.0.1:8000/post/new/
+* Editar Post: http://127.0.0.1:8000/post/<id>/edit/
+* Eliminar Post: http://127.0.0.1:8000/post/<id>/delete/
+* Registro de Usuario : http://127.0.0.1:8000/accounts/signup/
+* Login: http://127.0.0.1:8000/accounts/login/
+* Perfil: http://127.0.0.1:8000/accounts/profile/
+* Admin: http://127.0.0.1:8000/admin/
 
 ## Contribución
 
