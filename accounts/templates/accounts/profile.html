@@ -16,15 +16,15 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                
             </ul>
         </div>
     </nav>
     <div class="container">
         <h1>Perfil de Usuario</h1>
-        <form method="post">
+        <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- Include form fields for profile update -->
+            {{ form.as_p }}
+            {{ profile_form.as_p }}
             <button type="submit" name="update" class="btn btn-primary">Actualizar</button>
             <button type="submit" name="delete" class="btn btn-danger">Eliminar Cuenta</button>
         </form>
@@ -32,3 +32,6 @@
     {% endblock content %}
 </body>
 </html>
+
+
+
