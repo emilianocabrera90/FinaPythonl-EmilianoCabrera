@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login, authenticate, logout
+from django.contrib.auth import login, authenticate, logout, update_session_auth_hash
 from django.contrib.auth.forms import (
     UserCreationForm,
     AuthenticationForm,
@@ -7,7 +7,12 @@ from django.contrib.auth.forms import (
 )
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import get_user_model
-from .forms import UserProfileForm, UserProfileAvatarForm, UserChangeForm
+from .forms import (
+    UserProfileForm,
+    UserProfileAvatarForm,
+    UserChangeForm,
+    CustomPasswordChangeForm,
+)
 from .models import UserProfile
 
 
@@ -18,37 +23,29 @@ def profile(request):
 
     if request.method == "POST":
         if "update_profile" in request.POST:
-            
-            form = UserChangeForm(request.POST, instance=user)
             profile_form = UserProfileAvatarForm(
                 request.POST, request.FILES, instance=user_profile
             )
-            if form.is_valid() and profile_form.is_valid():
-                form.save()
+            if profile_form.is_valid():
                 profile_form.save()
                 return redirect("profile")
         elif "change_password" in request.POST:
-            
-            password_form = PasswordChangeForm(user, request.POST)
+            password_form = CustomPasswordChangeForm(user, request.POST)
             if password_form.is_valid():
-                password_form.save()
-                
-                login(request, user)
+                user = password_form.save()
+                update_session_auth_hash(request, user)
                 return redirect("profile")
         elif "delete" in request.POST:
             user.delete()
             return redirect("home")
     else:
-        form = UserChangeForm(instance=user)
         profile_form = UserProfileAvatarForm(instance=user_profile)
-        password_form = PasswordChangeForm(user)
+        password_form = CustomPasswordChangeForm(user)
 
     return render(
         request,
         "accounts/profile.html",
-        {"form": form, "profile_form": profile_form, "password_form": password_form},
-
-        
+        {"profile_form": profile_form, "password_form": password_form},
     )
 
 

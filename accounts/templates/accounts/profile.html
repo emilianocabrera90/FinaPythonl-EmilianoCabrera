@@ -24,7 +24,6 @@
     <form method="post" enctype="multipart/form-data">
       {% csrf_token %}
       <h3>Actualizar Perfil</h3>
-      {{ form.as_p }}
       {{ profile_form.as_p }}
       <button type="submit" name="update_profile">Actualizar Perfil</button>
     </form>
