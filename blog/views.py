@@ -2,11 +2,19 @@ from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post
 from .forms import PostForm
+from accounts.models import UserProfile
+from django.contrib.auth import logout
 
 
+@login_required
 def home(request):
-    posts = Post.objects.all()
-    return render(request, "blog/home.html", {"posts": posts})
+    posts = Post.objects.all()  # Obtiene todas las publicaciones
+    user_profile = UserProfile.objects.get(
+        user=request.user
+    )  # Obtiene el perfil del usuario
+    return render(
+        request, "blog/home.html", {"posts": posts, "user_profile": user_profile}
+    )
 
 
 def post_detail(request, pk):
@@ -48,3 +56,8 @@ def delete_post(request, pk):
         post.delete()
         return redirect("home")
     return render(request, "blog/delete_post.html", {"post": post})
+
+
+def logout_view(request):
+    logout(request)
+    return redirect("home")

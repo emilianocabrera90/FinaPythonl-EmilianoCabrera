@@ -19,19 +19,31 @@
             </ul>
         </div>
     </nav>
-    <div class="container">
-        <h1>Perfil de Usuario</h1>
-        <form method="post" enctype="multipart/form-data">
-            {% csrf_token %}
-            {{ form.as_p }}
-            {{ profile_form.as_p }}
-            <button type="submit" name="update" class="btn btn-primary">Actualizar</button>
-            <button type="submit" name="delete" class="btn btn-danger">Eliminar Cuenta</button>
-        </form>
-    </div>
+    <h2>Perfil de Usuario</h2>
+
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <h3>Actualizar Perfil</h3>
+      {{ form.as_p }}
+      {{ profile_form.as_p }}
+      <button type="submit" name="update_profile">Actualizar Perfil</button>
+    </form>
+  
+    <form method="post">
+      {% csrf_token %}
+      <h3>Cambiar Contraseña</h3>
+      {{ password_form.as_p }}
+      <button type="submit" name="change_password">Cambiar Contraseña</button>
+    </form>
+  
+    <form method="post">
+      {% csrf_token %}
+      <button type="submit" name="delete">Eliminar Cuenta</button>
+    </form>
     {% endblock content %}
 </body>
 </html>
+
 
 
 
