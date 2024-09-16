@@ -18,7 +18,7 @@ def profile(request):
 
     if request.method == "POST":
         if "update_profile" in request.POST:
-            # Formulario para actualizar el perfil de usuario
+            
             form = UserChangeForm(request.POST, instance=user)
             profile_form = UserProfileAvatarForm(
                 request.POST, request.FILES, instance=user_profile
@@ -28,11 +28,11 @@ def profile(request):
                 profile_form.save()
                 return redirect("profile")
         elif "change_password" in request.POST:
-            # Formulario para cambiar la contraseña
+            
             password_form = PasswordChangeForm(user, request.POST)
             if password_form.is_valid():
                 password_form.save()
-                # Re-autenticamos al usuario para que use la nueva contraseña
+                
                 login(request, user)
                 return redirect("profile")
         elif "delete" in request.POST:
@@ -47,6 +47,8 @@ def profile(request):
         request,
         "accounts/profile.html",
         {"form": form, "profile_form": profile_form, "password_form": password_form},
+
+        
     )
 
 

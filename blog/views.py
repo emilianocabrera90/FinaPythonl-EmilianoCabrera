@@ -8,10 +8,10 @@ from django.contrib.auth import logout
 
 @login_required
 def home(request):
-    posts = Post.objects.all()  # Obtiene todas las publicaciones
+    posts = Post.objects.all()  
     user_profile = UserProfile.objects.get(
         user=request.user
-    )  # Obtiene el perfil del usuario
+    )  
     return render(
         request, "blog/home.html", {"posts": posts, "user_profile": user_profile}
     )
