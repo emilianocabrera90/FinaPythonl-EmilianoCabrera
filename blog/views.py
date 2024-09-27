@@ -8,10 +8,8 @@ from django.contrib.auth import logout
 
 @login_required
 def home(request):
-    posts = Post.objects.all()  
-    user_profile = UserProfile.objects.get(
-        user=request.user
-    )  
+    posts = Post.objects.all()
+    user_profile = UserProfile.objects.get(user=request.user)
     return render(
         request, "blog/home.html", {"posts": posts, "user_profile": user_profile}
     )
@@ -53,8 +51,15 @@ def update_post(request, pk):
 def delete_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if request.method == "POST":
-        post.delete()
-        return redirect("home")
+        if post.author == request.user or request.user.is_superuser:
+            post.delete()
+            return redirect("home")
+        else:
+            return render(
+                request,
+                "blog/delete_post.html",
+                {"post": post, "error": "No tienes permiso para eliminar este post."},
+            )
     return render(request, "blog/delete_post.html", {"post": post})
 
 

@@ -16,16 +16,18 @@
         <div class="collapse navbar-collapse">
             <ul class="navbar-nav mr-auto">
                 <li class="nav-item"><a class="nav-link" href="{% url 'home' %}">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="{% url 'create_post' %}">Crear Post</a></li>
             </ul>
         </div>
     </nav>
     <div class="container">
         <h1>Eliminar Post</h1>
+        {% if error %}
+            <div class="alert alert-danger">{{ error }}</div>
+        {% endif %}
         <p>¿Estás seguro de que quieres eliminar el post "{{ post.title }}"?</p>
         <form method="post">
             {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Eliminar</button>
+            <button type="submit" class="btn btn-danger">Eliminar Blog</button>
             <a href="{% url 'post_detail' post.pk %}" class="btn btn-secondary mt-3">Cancelar</a>
         </form>
     </div>
